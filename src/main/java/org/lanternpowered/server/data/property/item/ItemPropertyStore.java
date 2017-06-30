@@ -45,6 +45,6 @@ public final class ItemPropertyStore<T extends Property<?,?>> extends AbstractIt
     protected Optional<T> getFor(ItemStack itemStack) {
         final Optional<PropertyProvider<? extends T>> provider = ((LanternItemType) itemStack.getItem())
                 .getPropertyProviderCollection().get(this.propertyType);
-        return provider.isPresent() ? Optional.ofNullable(provider.get().get(itemStack.getItem(), itemStack)) : Optional.empty();
+        return provider.flatMap(propertyProvider -> Optional.ofNullable(propertyProvider.get(itemStack.getItem(), itemStack)));
     }
 }
