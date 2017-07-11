@@ -474,7 +474,7 @@ public final class BlockRegistryModule extends AdditionalPluginCatalogRegistryMo
         ////////////////////
         register(20, simpleBuilder()
                         .itemType()
-                        .properties(builder -> builder
+                        .properties(PropertyProviderCollections.GLASS.toBuilder()
                                 .add(hardness(0.3))
                                 .add(blastResistance(1.5)))
                         .translation("tile.glass.name")
@@ -1281,6 +1281,16 @@ public final class BlockRegistryModule extends AdditionalPluginCatalogRegistryMo
                         .boundingBox(BoundingBoxes.carpet())
                         .build("minecraft", "carpet"),
                 this::dyedData);
+        //////////////////////
+        ///   Packed Ice   ///
+        //////////////////////
+        register(174, simpleBuilder()
+                        .itemType()
+                        .properties(PropertyProviderCollections.PACKED_ICE.toBuilder()
+                                .add(hardness(0.5))
+                                .add(blastResistance(2.5)))
+                        .translation("tile.icePacked.name")
+                        .build("minecraft", "packed_ice"));
         /////////////////////
         /// Red Sandstone ///
         /////////////////////
@@ -1327,6 +1337,17 @@ public final class BlockRegistryModule extends AdditionalPluginCatalogRegistryMo
                                 .add(lightEmission(14)))
                         .translation("tile.endRod.name")
                         .build("minecraft", "end_rod"));
+        //////////////////////
+        ///   Bone Block   ///
+        //////////////////////
+        register(216, simpleBuilder()
+                        .itemType()
+                        .properties(PropertyProviderCollections.STONE.toBuilder()
+                                .add(instrument(InstrumentTypeRegistryModule.get().getById("minecraft:xylophone").get()))
+                                .add(hardness(2.0))
+                                .add(blastResistance(10.0)))
+                        .translation("tile.boneBlock.name")
+                        .build("minecraft", "bone_block"));
         ///////////////////////////
         ///  White Shulker Box  ///
         ///////////////////////////
